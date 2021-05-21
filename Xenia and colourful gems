@@ -1,0 +1,180 @@
+/* Xenia and colourful gems */
+/* we will given some n1 possible values for variable x,n2 possible values for variable y and n3 possible values for variable z.
+ We have to find the minimum possible value of the expression (x-y)^2 + (y-z)^2 + (z-x)^2 from the given set of values. */
+/* we have to fix one variable(either x or y or z) and find the closest values of the other 2 unfixed varibles.Lets say we 
+choose one value for x from n1 values and fix it,then we can choose the closest values to n1 for y as well as for z from given 
+n2 and n3 values.We have similarly fix y and also z and repeat the same.The minimum number is the solution to our problem */
+
+/*
+Input
+The first line contains a single integer t (1=t=100)  — the number of test cases. Then t test cases follow.
+
+The first line of each test case contains three integers nr,ng,nb (1=nr,ng,nb=105)  — the number of red gems, green gems and blue gems respectively.
+
+The second line of each test case contains nr integers r1,r2,…,rnr (1=ri=109)  — ri is the weight of the i-th red gem.
+
+The third line of each test case contains ng integers g1,g2,…,gng (1=gi=109)  — gi is the weight of the i-th green gem.
+
+The fourth line of each test case contains nb integers b1,b2,…,bnb (1=bi=109)  — bi is the weight of the i-th blue gem.
+
+It is guaranteed that ?nr=105, ?ng=105, ?nb=105 (the sum for all test cases).
+*/
+
+/* Editorial :-
+
+First, let's assume that there exists an optimum solution in which we choose rx, gy and bz satisfying rx=gy=bz.
+
+Here's a lemma:
+
+When y is fixed, rx is the maximum one that rx<=gy, and bz is the minimum one that gy<=bz.
+It's easy to prove: no matter what z is, the bigger rx is, the smaller (rx-gy)2 and (rx-bz)2 are; for bz it's similar.
+So, if we know that in one of the optimum solutions, rx=gy=bz, we can sort each array at first and then find x and z by binary search or 
+maintaining some pointers while enumerating y.
+Back to the original problem without rx=gy=bz, we can enumerate the six possible situations: rx=gy=bz, rx=bz=gy, gy=rx=bz, gy=bz=rx,
+ bz=rx=gy and bz=gy=rx. Find the optimum solution in each situation and the optimum one among them is the answer.
+*/
+ 
+#include<bits/stdc++.h>
+#include<iostream>
+using namespace std;
+
+long long int ans,n1,n2,n3;
+int t;
+long long int sqr(int x);
+
+bool property1(int a1,int a2)
+{
+	if(a1>=a2)
+	return true;
+	else 
+	return false;
+}
+
+bool property0(int a1,int a2)
+{
+	if(a1<=a2)
+	return true;
+	else
+	return false;
+}
+
+int first_element_with_property(vector<int> a,int x)
+{
+	int left=0;
+	int right=a.size();
+	while(left<right)
+	{
+		int mid=left+(right-left)/2;
+		if(property1(a[mid],x))
+		right=mid;
+		else
+		left=mid+1;
+	}
+	return left;//returns n if no element exists.
+}
+
+int last_element_with_property(vector<int> a,int x)
+{
+	int left=0;
+	int right=a.size();
+	while(left<right) //whenever we are looking for a property, we always remove the equality condition check here.
+	{
+		int mid=left+(right-left)/2;
+		if(!property0(a[mid],x)) //note the change in this condition comparing to the change in the previous case(change-1)
+		right=mid;
+		else
+		left=mid+1;
+	}
+	return left-1;//returns -1 if there is no element with the given property(change-2)
+	//so we can clearly see that there are 2 changes in this function when compared to the above function.
+}
+
+void solve(vector<int> a,vector<int> b,vector<int> c)
+{
+	/* we assume that a is always in the middle.We fix a and then find elements b,c such that b<=a<=c.Lets say we 
+	fixed value the middle value as a1 and now we proceed to the problem */
+	/*from array b[] we want to find the last element b1 which satisfies the condition of b1<=a1.From array c[] we 
+	want to find the first element c1 which satisfies the condition a1<=c1 */
+	for(int i=0;i<a.size();i++)
+	{
+		int x=a[i];
+		int indb1=last_element_with_property(b,x); //index of b1
+		int indc1=first_element_with_property(c,x);//index of c1
+		
+		if(indb1==-1 || indc1==c.size())
+		continue;
+		else
+		ans=min(ans,sqr(x-b[indb1]) + sqr(b[indb1]-c[indc1]) + sqr(c[indc1]-x));
+	}
+}
+
+/* we need one function which returns the square of numbers */
+long long int sqr(int x)
+{
+	return 1LL*x*x;
+}
+
+int main()
+{
+	cin>>t;
+	while(t--)
+	{
+	   cin>>n1>>n2>>n3;
+	   vector<int> a(n1),b(n2),c(n3);
+	   for(int i=0;i<n1;i++)
+	   cin>>a[i];
+	   for(int i=0;i<n2;i++)
+	   cin>>b[i];
+	   for(int i=0;i<n3;i++)
+	   cin>>c[i];
+	   
+	   /* since we have to deal with upper and lower bounds,we have to sort these elements */
+	   sort(a.begin(),a.end());//possible values for x
+	   sort(b.begin(),b.end());//possible values for y
+	   sort(c.begin(),c.end());//possible values for z
+	   
+	   ans=9e18;
+	   /*Any tupil (a,b,c) can be arranged in non-decreasing order.if this is arranged in non-decreasing order then a<=b<=c.*/
+	   solve(a,b,c);//b<=a<=c  varying (b,c) and fixing a 
+	   solve(a,c,b);//c<=a<=b  varying (c,b) and fixing a
+	   solve(b,c,a);//c<=b<=a  varying (c,a) and fixing b
+	   solve(b,a,c);//a<=b<=c
+	   solve(c,a,b);//a<=c<=b
+	   solve(c,b,a);//b<=c<=a
+	  
+    cout<<ans<<endl;
+	}
+}
+
+
+/* input:-Note that the first number represents the no of test cases.
+5
+2 2 3
+7 8
+6 3
+3 1 4
+1 1 1
+1
+1
+1000000000
+2 2 2
+1 2
+5 4
+6 7
+2 2 2
+1 2
+3 4
+6 7
+3 4 1
+3 2 1
+7 3 3 4
+6
+
+output:-
+14
+1999999996000000002
+24
+24
+14
+
+*/
