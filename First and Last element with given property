@@ -35,7 +35,7 @@ becomes equal to the right which was initially n.*/
 
 int last_element_with_propert()
 {
-	/* find the last index that is true in T,T,T,T,F,F,F ?? find first false instead */
+	/* find the last index that is true in T,T,T,T,F,F,F ?? find the index of first false instead and return index - 1. */
 	
 	int left=0;
 	int right=n;//note that here also it is n.
