@@ -4,6 +4,26 @@ bool property(int x)
 	return x>=20;
 }
 
+/*
+Before moving forward let us decribe the problem. Lets say we have a property which looks like 
+F,F,F,T,T,T,T applied on the array elements. 
+0,1,2,3,4,5,6
+
+In the above case , we want to find the first index which is True and here the answer is index 3 in the above case. By finding this index we can also find
+the last false index which is one less than the first true index 
+last false index = first true index - 1
+
+Similarly , in some of the cases, the property if applied on an array might look like this 
+T,T,T,F,F,F,F 
+0,1,2,3,4,5,6
+
+In the above case, we want to find the last index which is true and here the answer is index 2. By finding this index , we can also find the first false 
+index which is one more than the last true index. 
+
+first false index = last true index + 1
+
+*/
+
 
 
 int first_element_with_property()
