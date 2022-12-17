@@ -1,4 +1,4 @@
 # Binary_search
 Standard binary search and few modifications 
-
-1) solve Priyansh Agarwal youtube video on binary search ------> Get Together Problem 
+1) Search Insert Position (leetcode)
+2) solve Priyansh Agarwal youtube video on binary search ------> Get Together Problem 
