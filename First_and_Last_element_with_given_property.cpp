@@ -70,25 +70,19 @@ int first_element_with_property()
 int last_element_with_propert()
 {
 	/* find the last index that is true in T,T,T,T,F,F,F ?? find the index of first false instead and return index - 1. */
-	
 	int left=0;
-	int right=n;//note that here also it is n.
-	while(left<right)
+	int right=n-1;
+	int last_index = -1;
+	while(left<=right)
 	{
 		int mid=left+(right-left)/2;
-		if(!property(mid)) //if the middle element is false
-		right=mid;
+		if(property(mid)) 
+		{
+			last_index = mid;
+			left=mid+1;
+		}
 		else
-		left=mid+1;
+		right=mid-1;
 	}
-	return left-1;//returns -1 if no such elements exist.we can also return right-1 since both left and right are equal.
-/* if no element has the property,then in that case, only right gets updated and moves towards the left.Left is initially at 0 and thus atlast
-right also becomes equal to left ie 0.In this case,there is no last element with a given property.hence left - 1 becomes -1.
-
-/*lets we have an array like T F F F F F F F F then in this case,only the first element is satisfying the property and it also is the last 
-element with the property.So in the final iteration:
-left = 0;
-right = 1;
-now, mid = 0 and p(a[mid]) is true and hence in this case left becomes 1 and equals to right and hence the loop breaks.We return left-1 which 
-is 0 in this case and its the obvious answer which we have expected.*/
+	return last_index;//returns -1 if no such elements exist.
 }
