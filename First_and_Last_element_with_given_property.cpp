@@ -1,3 +1,7 @@
+#include<bits/stdc++.h>
+#include<iostream>
+using namespace std;
+
 bool property(int x)
 {
 	/* find the first element which is greater than equal to 20 */
@@ -46,21 +50,21 @@ int first_element_with_property()
 	find the first index that is true in F,F,T,T,T,T ?? we will implement below code such that it is similar to finding the last element with
 	some property.
 	 */
-	int left=0;
-	int right=n;//note here that right is not n-1 which is in traditional binary search.
-	while(left<right) //note the change here with the normal binary search code.
-	{
-		int mid=left+(right-left)/2;
-		if(property(mid)) //if middle element is true
-		right=mid;
-		else
-		left=mid+1;//if the middle element is false
-	}
-	return left;//returns n if no such elements exist.we can also return right since both left and right are equal in this case.
-	
-/*the loop exists when left == right. If no elements exists,then always only the left index will move towards the right and at the end both left
-becomes equal to the right which was initially n.*/
-	
+	int left = 0;
+        int right = n-1;
+        int first_index = -1;
+        while(left<=right)
+        {
+            int mid = left + (right-left)/2;
+            if(property(mid))
+            {
+                first_index = mid;
+                right = mid-1;
+            }
+            else
+            left = mid + 1;
+        }
+        return first_index; // returns -1 if no element satisfying property is found	
 }
 
 int last_element_with_propert()
@@ -87,5 +91,4 @@ left = 0;
 right = 1;
 now, mid = 0 and p(a[mid]) is true and hence in this case left becomes 1 and equals to right and hence the loop breaks.We return left-1 which 
 is 0 in this case and its the obvious answer which we have expected.*/
-
 }
