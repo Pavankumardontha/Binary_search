@@ -5,3 +5,5 @@
 4) First bad version
 5) Search insert position (leetcode)
 6) Two Sum - 2 
+7) Search in rotated sorted array (leetcode)
+8) Find peak element in an array (leecode)
