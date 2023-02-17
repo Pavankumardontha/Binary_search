@@ -1,59 +1,58 @@
-
-
 /*
-There are 2 sorted arrays . 
-We will first calculate the mid element and see if that is equal to target or not. If it is then we stop the iteration if not 
-we have 2 cases to deal with 
-Mid index can either fall either in first sorted array or second sorted array.
-1) if mid falls in first sorted array. possible if nums[l] <= nums[mid]
-  - if target > nums[mid] or targest < nums[l] then we need to search in the right half so left = mid + 1;
-  - else right = mid - 1;
-2) if mid element falls in the right sorted array. 
-  - if target < nums[mid] or target > nums[r] we will search in the left half and so r = mid - 1
-  - else left = mid + 1
-  
+Initially , there are 2 sorted arrays. Left sorted array and the right sorted array.
+1) calculate mid and check if its equal to the target. If it is equal to target then return the index or 
+2) our [left,right] can either be sorted or not sorted.
+a) if it is sorted then we will apply simple binary search and move the left and right pointers accordingly.
+b) if [left,right] is not sorted then, [left,mid] or [mid,right] might be sorted. Either one of the arrays might be sorted and not both of them at the same
+time. Check if [left,mid] or [mid,right] is sorted and apply binary search only on the sorted part of the array.
 */
-
-int solve(vector<int>& a,int target)
-{
-    int left = 0;
-    int right = a.size()-1;
-    while(left<=right)
-    {
-        int mid = left + (right-left)/2;
-        if(a[mid]==target)
-        return mid;
-        else if(a[left]<=a[mid])
-        {
-            //mid falls in first sorted array
-            if(a[left]<=target and target<a[mid])
-            {
-                // target falls in [left,mid-1]
-                right = mid-1;
-            }
-            else
-            left = mid+1; // target falls in [mid+1,right]
-        }
-        else
-        {
-            // mid falls in second sorted array
-            if(a[mid]<target and target<=a[right])
-            {
-                // target falls in [mid+1,right]
-                left = mid+1;
-            }
-            else
-            right = mid-1; // target falls in [left,mid-1]
-
-        }
-    }
-    return -1;
-}
-
 class Solution {
 public:
-    int search(vector<int>& nums, int target) 
+    int search(vector<int>& a, int target) 
     {
-        return solve(nums,target);
+        int left = 0;
+        int right = a.size()-1;
+        while(left<=right)
+        {
+            int mid = left + (right-left)/2;
+            if(a[mid]==target)
+            return mid;
+            else if(a[left]<=a[mid] and a[mid]<=a[right])
+            {
+                //[left,right] is sorted
+                if(target<a[mid])
+                right = mid-1;
+                else
+                left = mid + 1;
+            }
+            else
+            {
+                /* 
+                [left,right] is not sorted. So either
+                [left,mid] might be sorted or 
+                [mid,right] might be sorted
+                In other words , mid can fall either in the right sorted array or
+                left sorted array
+                */
+                if(a[left]<=a[mid] and a[mid]>=a[right])
+                {
+                    // [left,mid] is sorted
+                    if(a[left]<=target and target<a[mid])
+                    right=mid-1;
+                    else
+                    left = mid+1;
+                }
+                else
+                {
+                    //[mid,right] is sorted
+                    if(a[mid]<=target and target<=a[right])
+                    left = mid+1;
+                    else
+                    right=mid-1;
+                    
+                }
+            }
+        }
+        return -1;
     }
 };
