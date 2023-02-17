@@ -6,6 +6,8 @@
 5) Search insert position (leetcode)
 6) Two Sum - 2 
 7) Search in 2D matrix
-7) Search in rotated sorted array (leetcode)
-8) Search in rotated sorted array - 2 (leetcode)
-8) Find peak element in an array (leecode)
+8) Search in rotated sorted array (leetcode)
+9) Search in rotated sorted array - 2 (leetcode)
+10) Find minimum in rotated sorted array (leetcode)
+11) Find minimum in rotated sorted array - 2 (leetcode)
+12) Find peak element in an array (leecode)
