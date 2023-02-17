@@ -7,4 +7,5 @@
 6) Two Sum - 2 
 7) Search in 2D matrix
 7) Search in rotated sorted array (leetcode)
+8) Search in rotated sorted array - 2 (leetcode)
 8) Find peak element in an array (leecode)
