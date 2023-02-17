@@ -27,13 +27,9 @@ public:
             }
             else
             {
-                /* 
-                [left,right] is not sorted. So either
-                [left,mid] might be sorted or 
-                [mid,right] might be sorted
-                In other words , mid can fall either in the right sorted array or
-                left sorted array
-                */
+                /*
+                [left,right] is not sorted. So either [left,mid] might be sorted or [mid,right] might be sorted
+                In other words , mid can fall either in the right sorted array or left sorted array*/
                 if(a[left]<=a[mid] and a[mid]>=a[right])
                 {
                     // [left,mid] is sorted
