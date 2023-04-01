@@ -11,4 +11,5 @@
 10) Find minimum in rotated sorted array (leetcode)
 11) Find minimum in rotated sorted array - 2 (leetcode)
 12) Find peak element in an array (leecode)
-13) Find median in a data stream
+13) Peak Index in a Mountain Array
+14) Find median in a data stream
