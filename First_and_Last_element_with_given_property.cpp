@@ -29,11 +29,7 @@ index which is one more than the last true index.
 first false index = last true index + 1
 
 CASE - 3:
-In this case we somewhat have a different scenario like 
-F F F F T T T F F F F F
-OR 
-T T T T F F F T T T T T
-
+In this case we somewhat have a different scenario like where we need to find the first and last index of an element.
 Ex : find the first and last index of a target element in the sorted array [1,2,2,2,2,4,5,6,7,7,7]. 
 If the target element is 2 , the answer is [1,4]. So for these kind of problems also we use binary search. 
 */
