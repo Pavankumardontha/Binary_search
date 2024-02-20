@@ -40,6 +40,95 @@ If the target element is 2 , the answer is [1,4]. So for these kind of problems 
 
 
 
+// APPROACH-1 
+// [T,T,T,F,F,F,F]
+int first_false(vector<bool> a)
+{
+    int n = a.size();
+    int l = 0;
+    int r =n-1;
+    int index = -1;
+    while(l<=r)
+    {
+        int mid = l + (r-l)/2;
+        if(property(a,mid)==false)
+        {
+            index = mid;
+            r = mid-1;
+        }
+        else
+        l = mid+1;
+    }
+    return index;
+}
+
+// [F,F,F,F,T,T]
+int first_true(vector<bool> a)
+{
+    int n = a.size();
+    int l = 0;
+    int r = n-1;
+    int index = -1;
+    while(l<=r)
+    {
+        int mid = l + (r-l)/2;
+        if(property(a,mid)==true)
+        {
+            index = mid;
+            r = mid-1;
+        }
+        else
+        l = mid+1;
+    }
+    return index;
+}
+
+// [F,F,F,F,T,T,T]
+int last_false(vector<bool> a)
+{
+    int n = a.size();
+    int l = 0;
+    int r = n-1;
+    int index = -1;
+    while(l<=r)
+    {
+        int mid = l + (r-l)/2;
+        if(property(a,mid)==false)
+        {
+            index = mid;
+            l = mid+1;
+        }
+        else
+        r = mid-1;
+    }
+    return index;
+}
+
+// [T,T,T,F,F,F,]
+int last_true(vector<bool> a)
+{
+    int n = a.size();
+    int l = 0;
+    int r = n-1;
+    int index = -1;
+    while(l<=r)
+    {
+        int mid =  l + (r-l)/2;
+        if(property(a,mid)==true)
+        {
+            index = mid;
+            l = mid+1;
+        }
+        else
+        r = mid-1;
+    }
+    return index;
+}
+
+//--------------------------------//
+
+
+// APPROACH-1
 int first_element_with_property()
 {
 	
