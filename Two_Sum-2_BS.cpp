@@ -21,3 +21,26 @@ public:
         return ans;
     }
 };
+
+//---- APPROACH-2 -------
+class Solution {
+public:
+    vector<int> twoSum(vector<int>& nums, int target) 
+    {
+        vector<int> ans;
+        unordered_map<int,int> mp;
+        for(int i=0;i<nums.size();i++)
+        {
+            int required_number = target-nums[i];
+            cout<<required_number<<endl;
+            if(mp.find(required_number) != mp.end())
+            {
+                ans.push_back(i);
+                ans.push_back(mp[required_number]);
+                break;
+            }
+            mp[nums[i]]=i;
+        }
+        return ans;
+    }
+};
