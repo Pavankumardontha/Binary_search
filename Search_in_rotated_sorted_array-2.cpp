@@ -4,10 +4,14 @@ to know in which direction to move either to the left or to the right. In this c
 move to the left and as well to the right by 1, ie 
 l++ and r--;
 
-consider the case : [1,0,1,1,1],target=0 
+consider the first case : [1,0,1,1,1],target=0 
 here l=0 and r=4 , mid=2 and a[mid]=a[l]=a[r]=1 here we will not know in which direction we need
 to move. We cannot exactly tell in which steep the target and mid lies.
 
+consider the second case : [1,2,0,1,1] , target=2
+l=0,r=4=> mid=2 a[l]=a[r]=1 a[mid]=0
+Here we can clearly decide on which direction to move. So only when a[l]=a[mid]=a[r] we cannot 
+decide the direction to move.
 */
 
 class Solution {
