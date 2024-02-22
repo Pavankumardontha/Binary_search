@@ -6,6 +6,8 @@ the second steep. So we try to move to the right if mid is in the first steep an
 left if the mid is the second steep.
 condition-1 if mid in first steep , l=mid+1
 condition-2 if mid is in second steep then only there is a possibility that mid can be the minimum element so => minimum = min(minimum,a[mid]), r=mid-1
+
+NOTE : This is used to search for an element in the rotated sorted array.
 */
 class Solution {
 public:
