@@ -1,4 +1,4 @@
-f/*
+/*
 Minimum element is always the starting element of the second steep.
 Maximum element is always the ending element of the first steep.
 mid can either be in the first steep or second steep. But minimum element will always lie in 
