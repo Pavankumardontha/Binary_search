@@ -20,7 +20,6 @@ public:
         while(l<=r)
         {
             int mid = l + (r-l)/2;
-            cout<<l<<" "<<r<<" "<<mid<<endl;
             if(a[mid]>=a[0])
             {
                 // if mid belongs to first steep
