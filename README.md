@@ -10,8 +10,9 @@
 9) Search in rotated sorted array - 2 (leetcode)
 10) Find minimum in rotated sorted array (leetcode)
 11) Find minimum in rotated sorted array - 2 (leetcode)
-12) Find peak element in an array (leecode)
-13) Peak Index in a Mountain array. (leetcode)
-14) Find in mountain array. (leetcode)
-15) Find median in a data stream.
+12) Single element in sorted array (leetcode)
+13) Find peak element in an array (leecode)
+14) Peak Index in a Mountain array. (leetcode)
+15) Find in mountain array. (leetcode)
+16) Find median in a data stream.
 
