@@ -14,8 +14,9 @@
 13) Find minimum in rotated sorted array - 2 (leetcode)
 14) Single element in sorted array (leetcode)
 15) Koko eating bananas (leetcode)
-16) Find peak element in an array (leecode)
-17) Peak Index in a Mountain array. (leetcode)
-18) Find in mountain array. (leetcode)
-19) Find median in a data stream.
+16) Minimum Number of Days to Make m Bouquets (leetcode)
+17) Find peak element in an array (leecode)
+18) Peak Index in a Mountain array. (leetcode)
+19) Find in mountain array. (leetcode)
+20) Find median in a data stream.
 
