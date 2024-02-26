@@ -17,8 +17,9 @@
 16) Koko eating bananas (leetcode)
 17) Minimum Number of Days to Make m Bouquets (leetcode)
 18) Capacity to ship packages within D days (leetcode)
-19) Find peak element in an array (leecode)
-20) Peak Index in a Mountain array. (leetcode)
-21) Find in mountain array. (leetcode)
-22) Find median in a data stream.
+19) Minimized Maximum of products distributed to any stores (leetcode)
+20) Find peak element in an array (leecode)
+21) Peak Index in a Mountain array. (leetcode)
+22) Find in mountain array. (leetcode)
+23) Find median in a data stream.
 
