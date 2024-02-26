@@ -13,11 +13,12 @@
 12) Find minimum in rotated sorted array (leetcode)
 13) Find minimum in rotated sorted array - 2 (leetcode)
 14) Single element in sorted array (leetcode)
-15) Koko eating bananas (leetcode)
-16) Minimum Number of Days to Make m Bouquets (leetcode)
-17) Capacity to ship packages within D days (leetcode)
-18) Find peak element in an array (leecode)
-19) Peak Index in a Mountain array. (leetcode)
-20) Find in mountain array. (leetcode)
-21) Find median in a data stream.
+15) Kth missing positive number (leetcode)
+16) Koko eating bananas (leetcode)
+17) Minimum Number of Days to Make m Bouquets (leetcode)
+18) Capacity to ship packages within D days (leetcode)
+19) Find peak element in an array (leecode)
+20) Peak Index in a Mountain array. (leetcode)
+21) Find in mountain array. (leetcode)
+22) Find median in a data stream.
 
