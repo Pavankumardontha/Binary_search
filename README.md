@@ -19,8 +19,9 @@
 18) Capacity to ship packages within D days (leetcode)
 19) Minimized Maximum of products distributed to any stores (leetcode)
 20) Aggressive cows (SPOJ)
-21) Find peak element in an array (leecode)
-22) Peak Index in a Mountain array. (leetcode)
-23) Find in mountain array. (leetcode)
-24) Find median in a data stream.
+21) Allocate minimum no. of pages (GFG)
+22) Find peak element in an array (leecode)
+23) Peak Index in a Mountain array. (leetcode)
+24) Find in mountain array. (leetcode)
+25) Find median in a data stream.
 
