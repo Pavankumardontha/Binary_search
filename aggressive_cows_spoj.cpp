@@ -8,7 +8,7 @@ His C (2 <= C <= N) cows don't like this barn layout and become aggressive towar
 hurting each other, FJ wants to assign the cows to the stalls, such that the minimum distance between any two of them is as large as possible. 
 What is the largest minimum distance?
 Input
-t – the number of test cases, then t test cases follows.
+t â€“ the number of test cases, then t test cases follows.
 * Line 1: Two space-separated integers: N and C
 * Lines 2..N+1: Line i+1 contains an integer stall location, xi
 Output
