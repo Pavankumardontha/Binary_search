@@ -23,7 +23,8 @@
 22) Allocate minimum no. of pages (GFG)
 23) Painters partition problem - 2 (GFG)
 24) Find peak element in an array (leecode)
-25) Peak Index in a Mountain array. (leetcode)
-26) Find in mountain array. (leetcode)
-27) Find median in a data stream.
+25) Find peak element - 2 (leetcode)
+26) Peak Index in a Mountain array. (leetcode)
+27) Find in mountain array. (leetcode)
+28) Find median in a data stream.
 
