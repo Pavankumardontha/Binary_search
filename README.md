@@ -26,5 +26,7 @@
 25) Find peak element - 2 (leetcode)
 26) Peak Index in a Mountain array. (leetcode)
 27) Find in mountain array. (leetcode)
-28) Find median in a data stream.
+28) Find the median of 2 sorted arrays.
+29) Find the kth element of the 2 sorted arrays.
+30) Find median in a data stream.
 
