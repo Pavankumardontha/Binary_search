@@ -199,7 +199,7 @@ public:
         else
         {
             int l = 0; // min no. of elements that we can pick from array nums1
-            int r = n1; // max no of elements that we can pick from array nums1
+            int r = min(no_of_elements_to_be_picked,n1); // max no of elements that we can pick from array nums1
             /* 
             we need to find how many elements we need to pick from nums1. In other words , how many elements from nums1
             will be in the first half of the combined sorted array(of size n1+n2).
