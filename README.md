@@ -29,4 +29,5 @@
 28) Find the median of 2 sorted arrays.
 29) Find the kth element of the 2 sorted arrays.
 30) Find median in a data stream.
+31) Median in row wise sorted matrix.
 
