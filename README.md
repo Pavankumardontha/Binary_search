@@ -1,7 +1,7 @@
 # Binary_search
 1) Standard binary search
 2) Find first and last with given property
-3) Find target indices (leetcode)
+3) Find target indices after sorting array
 4) First bad version
 5) Search insert position (leetcode)
 6) Two Sum - 2
