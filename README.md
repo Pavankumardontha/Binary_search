@@ -4,7 +4,7 @@
 3) Find target indices after sorting array
 4) First bad version
 5) Search insert position (leetcode)
-6) Two Sum - 2
+6) Two Sum - 2 (this is done using 2 pointer approach and not binary search)
 7) Row with max 1s (coding ninjas)
 8) find square root of a number using binary search (leetcode)
 9) Search in 2D matrix (leetcode)
