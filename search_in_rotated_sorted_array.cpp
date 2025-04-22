@@ -150,7 +150,7 @@ public:
             int mid = l + (r-l)/2;
             if(nums[mid] == target)
             return mid;
-            else if(check_if_sorted(nums,l,mid))
+            else if(check_if_sorted(nums,l,mid)) // check if [l,mid] is sorted
             {
                 // check if target falls between [l,mid]. if it falls , apply binary search
                 if(check_if_target_falls_between(nums,target,l,mid))
@@ -159,7 +159,7 @@ public:
                     return binary_search(nums,target,l,mid);
                 }
                 else
-                l=mid+1;
+                l=mid+1; // if the target does not fall between [l,mid[ then just move to the right
             }
             else
             {
@@ -170,7 +170,7 @@ public:
                     return binary_search(nums,target,mid,r);
                 }
                 else
-                r=mid-1;
+                r=mid-1; // if the target does not fall between [mid,r] then just move to the left
             }
         }
         return -1;
