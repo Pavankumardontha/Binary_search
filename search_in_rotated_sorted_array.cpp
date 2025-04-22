@@ -103,10 +103,76 @@ public:
 };
 
 
-
-
-
-
-
-
-
+/* LATEST APPROACH WITH CLEAR EXPLAINATION */
+class Solution {
+public:
+    bool check_if_sorted(vector<int> &nums, int l, int r)
+    {
+        if(nums[l]<=nums[r])
+        return true;
+        return false;
+    }
+    bool check_if_target_falls_between(vector<int> &nums, int target, int l, int r)
+    {
+        if(nums[l]<= target and target<=nums[r])
+        return true;
+        return false;
+    }
+    int binary_search(vector<int> &nums, int target, int l, int r)
+    {
+        while(l<=r)
+        {
+            int mid = l + (r-l)/2;
+            if(nums[mid] == target)
+            return mid;
+            else if(nums[mid]<target)
+            l=mid+1;
+            else
+            r=mid-1;
+        }
+        return -1;
+    }
+    int search(vector<int>& nums, int target) 
+    {
+        /*
+        1) Always either one of subarray [l,mid] will be sorted or [mid,r] will be sorted if the array is rotated atleast once. If not rotated
+        the total array will be sorted.
+        2) The elements present in the left sorted array are always greater than the elements present in the right sorted array
+        [4,5,6,7,0,1,2]
+        [0,1,2,3,4,5,6]
+        1) l=0 r=6 m=3 -> [l,m] is sorted but target does not belong to this so l=m+1
+        2) l=4 r=6 m=5 -> [l,r] is sorted and target belongs to this array. Apply binary search here.
+        */
+        int l = 0;
+        int r = nums.size()-1;
+        while(l<=r)
+        {
+            int mid = l + (r-l)/2;
+            if(nums[mid] == target)
+            return mid;
+            else if(check_if_sorted(nums,l,mid))
+            {
+                // check if target falls between [l,mid]. if it falls , apply binary search
+                if(check_if_target_falls_between(nums,target,l,mid))
+                {
+                    // apply binary search on [l.mid] searching for target
+                    return binary_search(nums,target,l,mid);
+                }
+                else
+                l=mid+1;
+            }
+            else
+            {
+                // [mid,r] is sorted
+                if(check_if_target_falls_between(nums,target,mid,r))
+                {
+                    //apply binary search on [r,mid] searching for target
+                    return binary_search(nums,target,mid,r);
+                }
+                else
+                r=mid-1;
+            }
+        }
+        return -1;
+    }
+};
