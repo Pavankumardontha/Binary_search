@@ -39,3 +39,50 @@ public:
         return minimum;
     }
 };
+
+
+/* APPROACH - 2 Similar to search in a rotated sorted array */
+class Solution {
+public:
+    bool check_if_sorted(vector<int> &nums,int l, int r)
+    {
+        if(nums[l]<=nums[r])
+        return true;
+        return false;
+    }
+    int findMin(vector<int>& nums) 
+    {
+        int n = nums.size();
+        int l = 0;
+        int r = n-1;
+        int ans = INT_MAX;
+        /*
+        Do search in a rotated matrix before doing this. 
+        1) as specified either [l,mid] will be sorted or [mid,r] will be sorted
+        - if [l,mid] is sorted , minimum element will be at nums[l]. store this and move to the right
+        - if [mid,r] is sorted , minimum element will be at nums[mid], store this and move to the left
+        */
+        while(l<=r)
+        {
+            int mid = l + (r-l)/2;
+            if(check_if_sorted(nums,l,mid))
+            {
+                ans = min(ans,nums[l]);
+                l=mid+1;
+            }
+            else
+            {
+                ans = min(ans,nums[mid]);
+                r=mid-1;
+            }
+        }
+        return ans;
+    }
+};
+
+
+
+
+
+
+
