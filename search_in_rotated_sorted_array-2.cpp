@@ -57,3 +57,82 @@ public:
         return false;
     }
 };
+
+
+
+/* Approach - 2 Same approach but written more cleanly */
+class Solution {
+public:
+    bool binary_search(vector<int> &nums, int target, int l, int r)
+    {
+        while(l<=r)
+        {
+            int mid = l + (r-l)/2;
+            if(nums[mid] == target)
+            return true;
+            else if(nums[mid]>target)
+            r=mid-1;
+            else
+            l=mid+1;
+        }
+        return false;
+    }
+    bool check_if_target_falls_between(vector<int> nums,int target, int l, int r)
+    {
+        if(nums[l]<=target and target<=nums[r])
+        return true;
+        return false;
+    }
+    bool check_if_sorted(vector<int> nums, int l, int r)
+    {
+        if(nums[l]<=nums[r])
+        return true;
+        return false;
+    }
+    bool search(vector<int>& nums, int target) 
+    {
+        /*
+        the only case which we need to handle here in case of duplicate elements is when 
+        a[l] == a[mid] == a[r] In this case , we will not know in which direction we need to move.
+        In this case we just shrink the search space by 2 (l++ and r--).
+        */
+        int n = nums.size();
+        int l = 0;
+        int r = n-1;
+        while(l<=r)
+        {
+            int mid = l + (r-l)/2;
+            if(nums[mid] == target)
+            return true;
+            else if(nums[l] == nums[mid] and nums[mid]==nums[r])
+            {
+                // this is the only extra condition
+                l++;
+                r--;
+            }
+            else if(check_if_sorted(nums,l,mid))
+            {
+                //[l,mid] is sorted 
+                if(check_if_target_falls_between(nums,target,l,mid))
+                {
+                    return binary_search(nums,target,l,mid);
+                }
+                else
+                l=mid+1;
+            }
+            else
+            {
+                // [mid,r] is sorted
+                if(check_if_target_falls_between(nums,target,mid,r))
+                {
+                    return binary_search(nums,target,mid,r);
+                }
+                else
+                r=mid-1;
+            }
+        }
+        return false;
+    }
+};
+
+
