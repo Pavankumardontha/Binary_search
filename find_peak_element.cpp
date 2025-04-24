@@ -57,3 +57,45 @@ public:
         return -1;
     }
 };
+
+
+/* APPROACH - 2 */ 
+class Solution {
+public:
+    int findPeakElement(vector<int>& nums) 
+    {
+        /*Here we will check the neighbouring elements. So its better to check the edge cases first of the starting and ending elements.*/
+        int n = nums.size();
+        if(n==1)
+        return 0;
+        if(nums[0] > nums[1])
+        return 0;
+        if(nums[n-1] > nums[n-2])
+        return n-1;
+        // since we have already checked for the first and the last elements being peak, we can remove them from our range
+        int l = 1;
+        int r = n-2;
+        int mid;
+        while(l<=r)
+        {
+            mid = l + (r-l)/2;
+            /* 
+            We always move in the increasing direction !! 
+            We will have 3 possible cases here out of (mid-1,mid,mid+1)
+            1) nums[mid] is the greatest in (mid-1,mid,mid+1) -> return mid since we got the peak element index here.
+            2) nums[mid-1] is the greatest in (mid-1,mid,mid+1) -> we move towards mid-1 to the left -> move the right pointer to left
+            3) nums[mid+1] is the greatest in (mid-1,mid,mid+1) -> we move towards mid+1 to the right -> move the left pointer to the right
+            */
+            if(nums[mid]>nums[mid-1] and nums[mid]>nums[mid+1])
+            return mid;
+            else if(nums[mid]<nums[mid-1] and nums[mid-1]>nums[mid+1])
+            r=mid-1;
+            else
+            l=mid+1;
+        }
+        return -1;
+    }
+};
+
+
+
