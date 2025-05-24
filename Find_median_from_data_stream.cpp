@@ -16,11 +16,13 @@ Intially min_heap=[] and max_heap=[]
 -> 7 max_heap=[7] min_heap=[]
 -> 1 max_heap=[1] min_heap=[7] (since 7 belongs to the second half , it should be present in the min heap)
 -> 3 max_heap=[1,3] min_heap=[7] 
--> 2 max_heap=[1,2] min_heap=[3,7] (since 2 is less than top of max heap,it belongs to the first half.So we need to move top of the max heap to min heap and then insert 2 in max heap)
--> 19 max_heap=[1,2,3] min_heap[7,19] here since 19 is greater than the top of the min heap , it belongs to the second half and we need to push it into the min heap. But if we do 
-this the no. of elements in the min_heap will increase by 1 more than the no. of elements in the max_heap. We always want to keep the no. of elements in the max_heap higher(one 
-extra more) than the no. of elements in the min heap so that the median calculation in case of odd number inputs can easily be calculated only using the max heap. We can also 
-store directly in the min_heap also. If we do that , then for odd number of inputs , we need to check the larger size of min heap and max heap and return the median appropriately.
+-> 2 max_heap=[1,2] min_heap=[3,7] (since 2 is less than top of max heap,it belongs to the first half.So we need to move top of the max heap to min heap and then insert 2 
+in max heap)
+-> 19 max_heap=[1,2,3] min_heap[7,19] here since 19 is greater than the top of the min heap , it belongs to the second half and we need to push it into the min heap. 
+But if we do this the no. of elements in the min_heap will increase by 1 more than the no. of elements in the max_heap. We always want to keep the no. of elements in 
+the max_heap higher(one extra more) than the no. of elements in the min heap so that the median calculation in case of odd number inputs can easily be calculated only
+using the max heap. We can also store directly in the min_heap also. If we do that , then for odd number of inputs , we need to check the larger size of min heap and 
+max heap and return the median appropriately.
 -> 8 max_heap=[1,2,3] min_heap=[7,8,19]
 -> 0 max_heap=[0,1,2,3] min_heap=[7,8,19]
 */
