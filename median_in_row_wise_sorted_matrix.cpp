@@ -80,6 +80,18 @@ public:
         and apply binary search in this range. We will find a number where the no. of elements less than or equal
         to x is atleast (n+1)/2 and the number of elements which are greater than or equal to x is also 
         atleast (n+1)/2. 
+
+        Example: 
+        consider the case
+        [1,2,28]
+        [29,30,30]
+        [32,33,34]
+        After sorting the above matrix we get: [1,2,28,29,30,30,32,33,34]
+        here 30 is the median. 
+        But, no. of elements which are less than or equal to 30 = 6
+        and no. of elements which are greater than or equal to 30 = 5
+        clearly both are equal. But the no of elements greater than or equal to 30 are 6 and the no. of elements less than or equal to 30 are 5.
+        Both the values are greater than or equal to (n+1)/2. here n is the total no. of elements = 3*3 = 9
         */ 
         int minimum = INT_MAX;
         int maximum = INT_MIN;
