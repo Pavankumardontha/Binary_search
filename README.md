@@ -28,6 +28,5 @@
 27) Find in mountain array. (leetcode)
 28) Find the median of 2 sorted arrays.
 29) Find the kth element of the 2 sorted arrays.
-30) Find median in a data stream.
-31) Median in row wise sorted matrix.
-
+30) Find median in a data stream : Use max heap to store the first half of the sorted array and min heap to store the second half of the sorted array. If both min heap and max heap sizes are equal then we can use the top elements to find the median. if not ans will be the top of the max heap.
+31) Median in row wise sorted matrix (gfg) : 
