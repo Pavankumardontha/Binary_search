@@ -81,6 +81,9 @@ class Solution {
         and no. of elements which are greater than or equal to 30 = 5
         clearly both are equal. But the no of elements greater than or equal to 30 are 6 and the no. of elements less than or equal to 30 are 5.
         Both the values are greater than or equal to (n+1)/2. here n is the total no. of elements = 3*3 = 9
+
+        TIME COMPLEXITY: O(n log m * log(maxVal – minVal))
+        SPACE COMPLEXITY: O(1)
         */ 
         int n = mat.size();
         int m = mat[0].size();
