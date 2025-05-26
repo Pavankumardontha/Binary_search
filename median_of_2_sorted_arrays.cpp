@@ -18,6 +18,154 @@
         Space Complexity: O(1).
 
 */
+
+// latest 
+class Solution {
+public:
+    double findMedianSortedArrays(vector<int>& nums1, vector<int>& nums2) 
+    {
+        /*
+        To find median we need to create the first half and second half of the sorted array
+        let n = nums1.size() + nums2.size()
+        if n==odd we will have only one median -> we can find the median by picking (n+1)/2 elements
+        if n==even we will have 2 middle elements to calculate the median. So we need to pick (n/2)+1 elements
+
+        If we decide to pick x elements collectively from nums1 and nums2. How are we going to pick them ??
+        Lets say x = 5 , there can many possible cases to pick 5 elements from nums1 and nums2. Here are the possible cases
+        1) nums1->0 , nums2->5
+        2) nums1->1 , nums2->4
+        3) nums1->2 , nums2->3
+        4) nums1->3 , nums2->2
+        5) nums1->4 , nums2->1
+        6) nums1->5 , nums2->0
+        So there are 6 possible ways in which we can pick 5 elements from nums1 and nums2. Out of these 6 possible cases, what is the 
+        correct combination ?? Lets analyse a case
+
+        Example:
+        nums1 = 8,12,19,23,31,33 nums2=2,9,17,29,30,32 n1=5,n2=6 -> n1+n2=11 
+        since n=11 is odd we need to pick the first (n+1)/2 elements to determine the median = 6 elements. Lets analyse the possible cases each 
+        
+        1) nums1->0 , nums2->6 . This means we are picking 0 elements from nums1 and all the 6 elements from nums2
+        nums1 -> picked elements=[] not-picked_elements=[8,12,19,23,31,33] => []                [8,12,19,23,31,33]
+        nums2-> picked elements=[2,9,17,29,30,32] not-picked_elements = [] => [2,9,17,29,30,32] []
+        this is not a valid sequence because all the 6 picked up elements does not belong to the first half of the combined sorted array of nums1 and nums2
+        
+        2) nums1->1 , nums2->5
+        [8(l1)]             [(r1)12,19,23,31,33]
+        [2,9,17,29,30(l2)]  [(r2)32]
+        In general l1<r1 and l2<r2 since nums1 and nums2 are sorted. If all the 6 picked up elements actually are the first 6 elements of the combined sorted array then we will also
+        have 
+        l1<r2 and l2<r1. Here l2<r1 condition fails so this is not a valid combination
+        
+        3) nums1->2 , nums2->4 
+        [8,12(l1)]      [(r1)19,23,31,33]
+        [2,9,17,29(l2)] [(r2)30,32]
+        here l2<r1 condition fails. So not a valid combination.
+
+        4) nums1->3 , nums2->3
+        [8,12,19(l1)] [(r1)23,31,33]
+        [2,9,17(l2)]  [(r2)29,30,32]
+        Here l1<r2 and l2<r1 -> this is the correct combination. so the elements in the first half are [8,12,19(l1)] [2,9,17(l2)]
+        median = max(l1,l2) because the maximum of l1,l2 will be the 6th element which is the median.
+        */
+        int n1 = nums1.size();
+        int n2 = nums2.size();
+        int n =n1+n2;
+        int no_of_elements_to_pick;
+        no_of_elements_to_pick = (n+1)/2; // if we pick till the middle element , the next element to it will be the first element in the non-picked elements 
+
+        // we will start selecting elements from nums1
+        int l=0;
+        int r=min(no_of_elements_to_pick,n1);
+        int mid; // no of elements that we are picking from nums1
+        int no_of_elements_to_pick_from_nums2;
+        int l1,l2,r1,r2;
+        while(l<=r)
+        {
+            mid = l + (r-l)/2;
+            // If we are picking mid no. of elements from nums1, implies we need to pick (no_of_elements_to_pick - mid) elements from nums2
+            no_of_elements_to_pick_from_nums2 = no_of_elements_to_pick - mid;
+
+            if(no_of_elements_to_pick_from_nums2 > n2)
+            {
+                // we need to pick more elements from nums1
+                l=mid+1;
+            }
+            else
+            {
+                // we have a combination for which we need to check whether it satisfies our condition. Try to find l1,r1, l2,r2
+
+                // l1,r1
+                if(mid==0)
+                {
+                    l1 = INT_MIN;
+                    if(n1==0)
+                    r1 = INT_MAX;
+                    else
+                    r1 = nums1[0];
+                }
+                else
+                {
+                    l1 = nums1[mid-1];
+                    if(mid==n1)
+                    r1=INT_MAX;
+                    else
+                    r1=nums1[mid];
+                }
+
+                // l2,r2
+                if(no_of_elements_to_pick_from_nums2 == 0)
+                {
+                    l2=INT_MIN;
+                    if(n2==0)
+                    r2=INT_MAX;
+                    else
+                    r2 = nums2[no_of_elements_to_pick_from_nums2];
+                }
+                else
+                {
+                    l2 = nums2[no_of_elements_to_pick_from_nums2-1];
+                    if(no_of_elements_to_pick_from_nums2 == n2)
+                    r2 = INT_MAX;
+                    else
+                    r2 = nums2[no_of_elements_to_pick_from_nums2];
+                }
+
+                if(l1<=r2 and l2<=r1)
+                {
+                    // we have the correct combination
+                    if(n%2==1)
+                    return (double)max(l1,l2);
+                    else
+                    {
+                        // even no of elements case. Here we need 2 elements to calculate the median
+
+                        //cout<<l1<<" "<<l2<<" "<<r1<<" "<<r2<<endl;
+                        return (double)(max(l1,l2) + min(r1,r2))/2.0;
+                    }
+                }
+                else
+                {
+                    // we need to decide in which way we need to move
+                    if(l1>r2)
+                    {
+                        // pick less elements from nums1
+                        r=mid-1;
+                    }
+                    else
+                    {
+                        // pick more elements from nums1
+                        l=mid+1;
+                    }
+                }
+            }
+        }
+        return -1;
+    }
+};
+
+
+
 class Solution {
 public:
     double findMedianSortedArrays(vector<int>& nums1, vector<int>& nums2) 
