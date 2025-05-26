@@ -53,8 +53,8 @@ public:
         2) nums1->1 , nums2->5
         [8(l1)]             [(r1)12,19,23,31,33]
         [2,9,17,29,30(l2)]  [(r2)32]
-        In general l1<r1 and l2<r2 since nums1 and nums2 are sorted. If all the 6 picked up elements actually are the first 6 elements of the combined sorted array then we will also
-        have 
+        In general l1<r1 and l2<r2 since nums1 and nums2 are sorted. If all the 6 picked up elements actually are the first 6 elements of the 
+        combined sorted array then we will also have 
         l1<r2 and l2<r1. Here l2<r1 condition fails so this is not a valid combination
         
         3) nums1->2 , nums2->4 
