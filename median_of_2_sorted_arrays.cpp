@@ -139,8 +139,6 @@ public:
                     else
                     {
                         // even no of elements case. Here we need 2 elements to calculate the median
-
-                        //cout<<l1<<" "<<l2<<" "<<r1<<" "<<r2<<endl;
                         return (double)(max(l1,l2) + min(r1,r2))/2.0;
                     }
                 }
