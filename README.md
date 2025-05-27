@@ -25,7 +25,7 @@
 24) Find peak element in an array (leecode)
 25) Find peak element - 2 (leetcode)
 26) Peak Index in a Mountain array. (leetcode)
-27) Find in mountain array. (leetcode)
+27) Find in mountain array. (leetcode) : find the peak index in the mountain array and then apply BS on [0,peak_ind] and [peak_ind,n-1] range to find the target.
 28) Find the median of 2 sorted arrays.
 29) Find the kth element of the 2 sorted arrays.
 30) Sum of middle elements of 2 sorted arrays(gfg)
